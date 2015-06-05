@@ -5,24 +5,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <script src="refresh.js"></script>
     <style>
-        #timer {
+        #timer,#cookie {
             font-family: Georgia;
             font-weight: bold;
             font-size: 32px;
+        }
+
+        #cookie {
+            color: red;
+        }
+
+        #cookie .count {
+            color: green;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
 <script>
+function read_cookie(name) {
+        var cookie_value = "",
+            current_cookie = "",
+            name_expr = name + "=",
+            all_cookies = document.cookie.split(';'),
+            n = all_cookies.length;
+
+        for(var i = 0; i < n; i++) {
+            current_cookie = all_cookies[i].trim();
+            if(current_cookie.indexOf(name_expr) === 0) {
+                cookie_value = current_cookie.substring(name_expr.length, current_cookie.length);
+                break;
+            }
+        }
+        return cookie_value;
+    }
+
+
     $(function(){
         var sec = 0;
        setInterval(function(){
            $('#timer').text(++sec);
        },1000);
-
+       $('#cookie .count').text(read_cookie('reload_page'));
     });
 </script>
 <div id="timer"></div>
+<div id="cookie">cookie <div class="count"></div></div>
 <form action="">
     <input type="text"/><br/>
     <textarea name="" id="" cols="30" rows="10"></textarea>

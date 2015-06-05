@@ -27,6 +27,7 @@
 
     $(function(){
         var REFRESH_LIMIT = 99;
+        var TIMER_4_REFRESH = 60 * 5 * 1000;
         var stateKey, eventKey, refreshTimer, hasFocus, stopRefresh = false, windowEvent = '';
         var keys = {
             hidden: "visibilitychange",
@@ -152,7 +153,8 @@
 
         } else {
             initEvents();
-            if (typeof document.hasFocus === 'function')
+            console.log(document.hasFocus(), document.hidden);
+            if (typeof document.hasFocus === 'function' || document.hidden)
                 if (!document.hasFocus() || document.hidden) {
                     startTimer({type: 'blur'});
                 }
