@@ -4,11 +4,30 @@
     <title></title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <script src="refresh.js"></script>
+    <style>
+        #timer {
+            font-family: Georgia;
+            font-weight: bold;
+            font-size: 32px;
+        }
+    </style>
 </head>
 <body>
+<script>
+    $(function(){
+        var sec = 0;
+       setInterval(function(){
+           $('#timer').text(++sec);
+       },1000);
+
+    });
+</script>
+<div id="timer"></div>
 <form action="">
-    <input type="text"/>
+    <input type="text"/><br/>
     <textarea name="" id="" cols="30" rows="10"></textarea>
 </form>
+
+
 </body>
 </html>

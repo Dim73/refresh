@@ -152,9 +152,10 @@
 
         } else {
             initEvents();
-            if (!document.hasFocus() || document.hidden) {
-                startTimer({type: 'blur'});
-            }
+            if (typeof document.hasFocus === 'function')
+                if (!document.hasFocus() || document.hidden) {
+                    startTimer({type: 'blur'});
+                }
         }
     })
 })(jQuery);
